@@ -1,16 +1,18 @@
 import string
 from collections import Counter
 
+
 def count_words(paragraph):
-    #normalize paragraph to all lowercase
+    # normalize paragraph to all lowercase
     paragraph = paragraph.lower()
-    #remove punctuation converts punctuation to nothing
+    # remove punctuation converts punctuation to nothing
     paragraph = paragraph.translate(str.maketrans('', '', string.punctuation))
    # split the string into a list of words
     wordList = paragraph.split()
-   #import counter, it will automatically count how many of each word there is 
+   # import counter, it will automatically count how many of each word there is
     counter = Counter(wordList)
     return counter
+
 
 def main():
     paragraph = """Nadia’s Garden Restaurant is the creation of husband and wife team Nadia and Timothy Arbore. 
@@ -22,6 +24,7 @@ def main():
      more intimate, dining spaces. Nadia and Timothy are committed to sharing their family history of cuisine, along with their new inspirations,
       with their customers. Their passion for community, entertainment, and hospitality are found in every aspect of Nadia’s Garden Restaurant."""
     print(count_words(paragraph))
+
 
 if __name__ == "__main__":
     main()
