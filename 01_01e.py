@@ -2,9 +2,13 @@ import string
 from collections import Counter
 
 def count_words(paragraph):
+    #normalize paragraph to all lowercase
     paragraph = paragraph.lower()
+    #remove punctuation converts punctuation to nothing
     paragraph = paragraph.translate(str.maketrans('', '', string.punctuation))
+   # split the string into a list of words
     wordList = paragraph.split()
+   #import counter, it will automatically count how many of each word there is 
     counter = Counter(wordList)
     return counter
 
