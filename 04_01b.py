@@ -1,7 +1,33 @@
-from collections import namedtuple
+from collections import namedtuple, defaultdict
+from pprint import pprint
+
+# creating a method
+
+
+def get_dict(list_tocategorize):
+    # creating a default dict that has an empty set a the default value
+    res = defaultdict(lambda: set())
+
+    for item in list_tocategorize:
+        # cat stores the first 3 leeters of the identifer
+        cat = item.identifier[0:3]
+        # checks to see if cat matches the case and then does the corresponding action
+        match cat:
+            case "STA":
+                res["starter"].add(item)  # adds an item to a set
+            case "BEV":
+                res["beverage"].add(item)
+            case "SAL":
+                res["salad"].add(item)
+            case "ENT":
+                res["entree"].add(item)
+            case "DES":
+                res["dessert"].add(item)
+    return res
+
 
 def main():
-    #add code here
+    # add code here
     Food = namedtuple("Food", ["identifier", "name"])
 
     nadias_list = [
@@ -35,8 +61,10 @@ def main():
         Food("DES005",	"Mixed Berry Tart"),
         Food("BEV003",	"Cafe Latte"),
     ]
+    pprint(dict(get_dict(nadias_list)))
 
     return
+
 
 if __name__ == "__main__":
     main()
